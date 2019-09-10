@@ -1,0 +1,46 @@
+#%RAML 1.0
+version: v1
+title: api-anypointmq-proxy
+  
+/anypointmq:
+  get:
+    description: Retrieves a single message from the specified queue.
+    queryParameters: 
+      queueName:
+        type: string
+        required: true
+        example: "queueName"
+    responses:
+      200:
+        body: 
+          application/json:
+            example : !include examples/message-response.json
+      404:
+        body: 
+          application/json:
+            example : !include examples/mq-404.json
+  delete:
+    description: Used to either Ack or Nack receipt of specific message retrieved earlier from the specific queue.
+    queryParameters:
+      queueName:
+        type: string
+        required: true
+      messageID:
+        type: string
+        required: true
+      lockID:
+        type: string
+        required: true
+      ack:
+        type: boolean
+        required: false
+        default: true
+    responses:
+      200:
+        body: 
+          application/json:
+              example : !include examples/ack-response.json
+      404:
+        body: 
+          application/json:
+              example : !include examples/mq-404.json

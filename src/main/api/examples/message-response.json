@@ -1,0 +1,14 @@
+[
+  {
+    "headers": {
+      "messageId": "String",
+      "lockId": "String"
+    },
+    "properties": {
+      "userDefinedHeader": "User defined stuff",
+      "anotherUserDefinedHeader": "Random stuff",
+      "Content-Type": "plain/text"
+    },
+    "body": "This is a message payload"
+  }
+]
